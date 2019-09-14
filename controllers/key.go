@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"github.com/astaxie/beego"
+	"github.com/yushizhao/hackathon2019/models"
 )
 
 // Operations about Users
@@ -11,10 +12,10 @@ type KeyController struct {
 
 // @Title Display
 // @Description Display addressed
-// @Success 200 {string} hello
+// @Success 200
 // @router /display [get]
 func (c *KeyController) Display() {
 
-	c.Data["json"] = "hello"
+	c.Data["json"] = models.MasterKey.Display()
 	c.ServeJSON()
 }
