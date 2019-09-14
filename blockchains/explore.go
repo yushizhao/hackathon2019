@@ -23,3 +23,12 @@ func (e *ETHExplorer) Balance(addr string) ([]byte, error) {
 	}
 	return b, nil
 }
+
+// Free api keys have strict key limits. We use mock data to ensure demo success.
+func (e *ETHExplorer) MOCKBalance() (interface{}, error) {
+	b := make(map[string]float64)
+	b["ETH"] = 12.983
+	b["USDC"] = 18848.0
+	b["QTUM"] = 3668
+	return b, nil
+}
