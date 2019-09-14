@@ -7,9 +7,8 @@ import (
 	"github.com/btcsuite/btcutil/hdkeychain"
 )
 
-var NET = &chaincfg.MainNetParams
-
 type BTCStyleKey struct {
+	Net     *chaincfg.Params
 	Master  *hdkeychain.ExtendedKey
 	ChildID uint32
 	Addr    string
@@ -28,8 +27,11 @@ func keyToAddr(key *btcec.PrivateKey, net *chaincfg.Params) (btcutil.Address, er
 func NewBTCStyleKey() (*BTCStyleKey, error) {
 	var key BTCStyleKey
 	var err error
+
+	key.Net = &chaincfg.MainNetParams
+
 	seed := "MOCK hackathon2019 MOCK"
-	key.Master, err = hdkeychain.NewMaster([]byte(seed), NET)
+	key.Master, err = hdkeychain.NewMaster([]byte(seed), key.Net)
 	if err != nil {
 		return &key, err
 	}
@@ -46,7 +48,7 @@ func NewBTCStyleKey() (*BTCStyleKey, error) {
 		return &key, err
 	}
 
-	addr, err := keyToAddr(pk, NET)
+	addr, err := keyToAddr(pk, key.Net)
 	if err != nil {
 		return &key, err
 	}
