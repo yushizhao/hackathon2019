@@ -1,9 +1,10 @@
 package models
 
 type Command struct {
-	Type     string
-	Nickname string
-	Code     string
-	Msg      string
-	Value    int
+	Timestamp int64
+	Type      string
+	Nickname  string
+	Code      string
+	Msg       string
+	Value     int
 }

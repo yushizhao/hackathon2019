@@ -1,6 +1,9 @@
-package blockchains
+package explore
 
-import "github.com/astaxie/beego/httplib"
+import (
+	"github.com/astaxie/beego/httplib"
+	"github.com/yushizhao/hackathon2019/models"
+)
 
 type ETHExplorer struct {
 	URL    string
@@ -31,4 +34,19 @@ func (e *ETHExplorer) MOCKBalance() (interface{}, error) {
 	b["USDC"] = 18848.0
 	b["QTUM"] = 3668
 	return b, nil
+}
+
+func (e *ETHExplorer) Transaction(addr string) ([]byte, error) {
+	endpoint := "getAddressTransactions/" + addr + "?apiKey=" + Ethplorer.APIKEY
+	req := httplib.Get(e.URL + endpoint)
+	b, err := req.Bytes()
+	if err != nil {
+		return nil, err
+	}
+	return b, nil
+}
+
+func (e *ETHExplorer) MOCKTransaction() (interface{}, error) {
+	var tx models.Command
+	return tx, nil
 }
