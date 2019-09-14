@@ -1,7 +1,7 @@
 package main
 
 import (
-	_ "github.com/yushizhao/hackathon/routers"
+	_ "github.com/yushizhao/hackathon2019/routers"
 
 	"github.com/astaxie/beego"
 )

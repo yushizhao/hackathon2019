@@ -8,21 +8,20 @@
 package routers
 
 import (
-	"github.com/yushizhao/hackathon/controllers"
-
 	"github.com/astaxie/beego"
+	"github.com/yushizhao/hackathon2019/controllers"
 )
 
 func init() {
 	ns := beego.NewNamespace("/v1",
-		beego.NSNamespace("/object",
+		beego.NSNamespace("/key",
 			beego.NSInclude(
-				&controllers.ObjectController{},
+				&controllers.KeyController{},
 			),
 		),
-		beego.NSNamespace("/user",
+		beego.NSNamespace("/blockchain",
 			beego.NSInclude(
-				&controllers.UserController{},
+				&controllers.BlockchainController{},
 			),
 		),
 	)
