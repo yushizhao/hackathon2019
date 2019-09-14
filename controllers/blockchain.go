@@ -3,10 +3,9 @@ package controllers
 import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
-	explore "github.com/yushizhao/hackathon2019/explorers"
+	"github.com/yushizhao/hackathon2019/explorer"
 )
 
-// Operations about Users
 type BlockchainController struct {
 	beego.Controller
 }
@@ -18,7 +17,7 @@ type BlockchainController struct {
 func (c *BlockchainController) Balance() {
 	// b, err := blockchains.Ethplorer.Balance(models.MasterKey.ETH.Address.Hex())
 	// Free api keys have strict key limits. We use mock data to ensure demo success.
-	b, err := explore.Ethplorer.MOCKBalance()
+	b, err := explorer.Ethplorer.MOCKBalance()
 
 	if err != nil {
 		logs.Error(err)
@@ -35,7 +34,7 @@ func (c *BlockchainController) Balance() {
 func (c *BlockchainController) Transaction() {
 	// b, err := blockchains.Ethplorer.Transaction("0xb297cacf0f91c86dd9d2fb47c6d12783121ab780")
 	// Free api keys have strict key limits. We use mock data to ensure demo success.
-	b, err := explore.Ethplorer.MOCKTransaction()
+	b, err := explorer.Ethplorer.MOCKTransaction()
 
 	if err != nil {
 		logs.Error(err)

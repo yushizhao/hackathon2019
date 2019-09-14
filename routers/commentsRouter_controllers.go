@@ -7,6 +7,15 @@ import (
 
 func init() {
 
+    beego.GlobalControllerRouter["github.com/yushizhao/hackathon2019/controllers:AccountController"] = append(beego.GlobalControllerRouter["github.com/yushizhao/hackathon2019/controllers:AccountController"],
+        beego.ControllerComments{
+            Method: "Display",
+            Router: `/display`,
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
     beego.GlobalControllerRouter["github.com/yushizhao/hackathon2019/controllers:BlockchainController"] = append(beego.GlobalControllerRouter["github.com/yushizhao/hackathon2019/controllers:BlockchainController"],
         beego.ControllerComments{
             Method: "Balance",

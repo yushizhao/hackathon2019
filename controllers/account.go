@@ -5,16 +5,16 @@ import (
 	"github.com/yushizhao/hackathon2019/models"
 )
 
-type KeyController struct {
+type AccountController struct {
 	beego.Controller
 }
 
 // @Title Display
-// @Description Display addressed
+// @Description Display accounts
 // @Success 200
 // @router /display [get]
-func (c *KeyController) Display() {
+func (c *AccountController) Display() {
 
-	c.Data["json"] = models.MasterKey.Display()
+	c.Data["json"] = models.Accounts
 	c.ServeJSON()
 }

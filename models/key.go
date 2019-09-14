@@ -1,7 +1,6 @@
 package models
 
 import (
-	"github.com/astaxie/beego/logs"
 	"github.com/yushizhao/hackathon2019/blockchains"
 )
 
@@ -11,13 +10,6 @@ type Key struct {
 }
 
 var MasterKey Key
-
-func init() {
-	err := MasterKey.Generate()
-	if err != nil {
-		logs.Error(err)
-	}
-}
 
 func (k *Key) Generate() (err error) {
 	k.BTC, err = blockchains.NewBTCStyleKey()
