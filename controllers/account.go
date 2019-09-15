@@ -16,5 +16,6 @@ type AccountController struct {
 func (c *AccountController) Display() {
 
 	c.Data["json"] = models.Accounts
+	c.Ctx.Output.Header("Access-Control-Allow-Origin", "*")
 	c.ServeJSON()
 }

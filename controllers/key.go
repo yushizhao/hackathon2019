@@ -16,5 +16,6 @@ type KeyController struct {
 func (c *KeyController) Display() {
 
 	c.Data["json"] = models.MasterKey.Display()
+	c.Ctx.Output.Header("Access-Control-Allow-Origin", "*")
 	c.ServeJSON()
 }

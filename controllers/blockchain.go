@@ -24,6 +24,7 @@ func (c *BlockchainController) Balance() {
 		c.Abort("500")
 	}
 	c.Data["json"] = b
+	c.Ctx.Output.Header("Access-Control-Allow-Origin", "*")
 	c.ServeJSON()
 }
 
@@ -41,5 +42,6 @@ func (c *BlockchainController) Transaction() {
 		c.Abort("500")
 	}
 	c.Data["json"] = b
+	c.Ctx.Output.Header("Access-Control-Allow-Origin", "*")
 	c.ServeJSON()
 }
